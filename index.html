@@ -1,0 +1,47 @@
+/* ── HEAD ── */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MyApp</title>
+  <style> /* ... styles ... */ </style>
+</head>
+
+/* ── AUTO REDIRECT LOGIC ── */
+<script>
+  var ua = navigator.userAgent;
+
+  // Detect iOS (iPhone / iPad)
+  var isIOS = /iPad|iPhone|iPod/.test(ua);
+
+  // Detect Android
+  var isAndroid = /Android/.test(ua);
+
+  if (isAndroid) {
+    // Send to Play Store
+    window.location.replace("https://play.google.com/store/apps/details?id=jp.co.nissan.nissanconnectservices&hl=en");
+  } else if (isIOS) {
+    // Send to App Store
+    window.location.replace("https://apps.apple.com/en/app/nissanconnect-services/id1451280347");
+  }
+  // else: desktop → show both buttons
+</script>
+
+/* ── FALLBACK UI (desktop / unknown) ── */
+<body>
+  <div class="card">
+    <h1>MyApp</h1>
+    <p>Select your platform</p>
+
+    <!-- iOS button -->
+    <a href="https://apps.apple.com/...">
+      Download on App Store
+    </a>
+
+    <!-- Android button -->
+    <a href="https://play.google.com/...">
+      Get it on Google Play
+    </a>
+  </div>
+</body>
