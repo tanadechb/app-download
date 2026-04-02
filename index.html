@@ -1,47 +1,157 @@
-/* ── HEAD ── */
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NissanConnect Services</title>
-  <style> /* ... styles ... */ </style>
+
+  <!-- Auto-redirect based on device -->
+  <script>
+    var ua = navigator.userAgent;
+    var isIOS = /iPad|iPhone|iPod/.test(ua);
+    var isAndroid = /Android/.test(ua);
+
+    if (isAndroid) {
+      window.location.replace("https://play.google.com/store/apps/details?id=jp.co.nissan.nissanconnectservices&hl=en");
+    } else if (isIOS) {
+      window.location.replace("https://apps.apple.com/th/app/nissanconnect-services/id6446879593");
+    }
+    // else: desktop → show both buttons below
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #1a1a1a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px 32px;
+      width: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .app-icon {
+      width: 72px;
+      height: 72px;
+      background-color: #f0f0f0;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .app-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: #111;
+    }
+
+    .app-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #111;
+      margin-top: 4px;
+    }
+
+    .app-subtitle {
+      font-size: 15px;
+      color: #888;
+      text-align: center;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 24px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      color: #fff;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .btn-appstore {
+      background-color: #111;
+    }
+
+    .btn-googleplay {
+      background-color: #4a7c59;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 4px;
+    }
+  </style>
 </head>
-
-/* ── AUTO REDIRECT LOGIC ── */
-<script>
-  var ua = navigator.userAgent;
-
-  // Detect iOS (iPhone / iPad)
-  var isIOS = /iPad|iPhone|iPod/.test(ua);
-
-  // Detect Android
-  var isAndroid = /Android/.test(ua);
-
-  if (isAndroid) {
-    // Send to Play Store
-    window.location.replace("https://play.google.com/store/apps/details?id=jp.co.nissan.nissanconnectservices&hl=en");
-  } else if (isIOS) {
-    // Send to App Store
-    window.location.replace("https://apps.apple.com/th/app/nissanconnect-services/id6446879593");
-  }
-  // else: desktop → show both buttons
-</script>
-
-/* ── FALLBACK UI (desktop / unknown) ── */
 <body>
   <div class="card">
-    <h1>MyApp</h1>
-    <p>Select your platform</p>
+    <!-- App Icon -->
+    <div class="app-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="5,3 19,12 5,21" />
+      </svg>
+    </div>
 
-    <!-- iOS button -->
-    <a href="https://apps.apple.com/th/app/nissanconnect-services/id6446879593">
-      Download on App Store
-    </a>
+    <!-- Title & Subtitle -->
+    <h1 class="app-title">NissanConnect</h1>
+    <p class="app-subtitle">Select your platform to download</p>
 
-    <!-- Android button -->
-    <a href="https://play.google.com/store/apps/details?id=jp.co.nissan.nissanconnectservices&hl=en">
-      Get it on Google Play
-    </a>
+    <!-- Buttons -->
+    <div class="buttons">
+      <!-- App Store -->
+      <a href="https://apps.apple.com/th/app/nissanconnect-services/id6446879593" class="btn btn-appstore">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.19 1.28-2.17 3.83.03 3.02 2.65 4.03 2.68 4.04l-.06.25zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        Download on App Store
+      </a>
+
+      <!-- Google Play -->
+      <a href="https://play.google.com/store/apps/details?id=jp.co.nissan.nissanconnectservices&hl=en" class="btn btn-googleplay">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="5,3 19,12 5,21" />
+        </svg>
+        Get it on Google Play
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <p class="footer-text">Auto-redirects based on your device</p>
   </div>
 </body>
+</html>
